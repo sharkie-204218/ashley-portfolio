@@ -32,6 +32,7 @@ button { font: inherit; }
   border-bottom: 1px solid var(--ink);
 }
 .wordmark { flex: 0 0 auto; font-size: 24px; font-weight: 900; letter-spacing: -.08em; }
+.wordmark .trademark { font-size: .42em; letter-spacing: 0; vertical-align: super; }
 .site-header nav { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 34px); }
 .site-header nav a,
 .language-toggle,
@@ -80,6 +81,15 @@ button { font: inherit; }
   letter-spacing: -.09em;
   font-weight: 900;
 }
+.hero-primary-name, .hero-secondary-name { display: block; }
+.hero-secondary-name {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: clamp(22px, 3vw, 39px);
+  line-height: 1.1;
+  letter-spacing: -.045em;
+  font-weight: 700;
+}
 .mobile-break { display: none; }
 .hero-role { margin: 30px 0 8px; font-size: clamp(19px, 2vw, 25px); font-weight: 700; }
 .hero-focus { margin: 0; color: var(--blue); font-size: clamp(14px, 1.4vw, 17px); font-weight: 700; }
@@ -116,9 +126,10 @@ button { font: inherit; }
 .education-date { display: flex; flex-direction: column; gap: 12px; padding-top: 5px; color: var(--paper); }
 .education-date span { color: #b8b2a8; font-size: 9px; }
 .education-label { margin: 0 0 17px; color: #db6569; }
-.education-copy h2 { max-width: 850px; margin: 0; font-size: clamp(22px, 3vw, 39px); line-height: 1.2; letter-spacing: -.045em; overflow-wrap: anywhere; }
-.education-join { display: inline-block; padding: 3px 0; color: #7799d4; font-family: Georgia, serif; font-size: .85em; font-style: italic; }
-.education-program { margin: 21px 0 5px; color: #d1cbc1; font-size: 13px; font-weight: 700; }
+.education-copy h2 { max-width: 850px; margin: 0; font-size: clamp(22px, 3vw, 39px); line-height: 1.2; letter-spacing: -.045em; overflow-wrap: break-word; }
+.education-institution { display: block; }
+.education-institution-secondary { font-size: .76em; line-height: 1.3; }
+.education-join { display: block; padding: 3px 0; color: #7799d4; font-family: Georgia, serif; font-size: .85em; font-style: italic; }
 .education-detail, .education-focus { margin: 8px 0 0; color: #d1cbc1; font-size: 13px; line-height: 1.6; }
 .education-focus { color: #e8797e; }
 .education-number { align-self: start; justify-self: end; color: #77736e; font-size: 27px; }
@@ -170,6 +181,11 @@ button { font: inherit; }
 .contact h2 { margin: 64px 0 22px; font-size: clamp(46px, 8vw, 105px); line-height: .94; letter-spacing: -.08em; }
 .contact h2 span { color: var(--ink); }
 .contact > .wrap > p { max-width: 620px; font-size: 17px; line-height: 1.6; }
+.contact-email { display: inline-block; margin: 30px 0 22px; padding-bottom: 7px; border-bottom: 1px solid currentColor; font-size: clamp(22px, 4vw, 36px); font-weight: 800; line-height: 1.2; letter-spacing: -.04em; overflow-wrap: anywhere; }
+.contact-email:hover { color: var(--ink); }
+.contact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 11px; }
+.copy-email-button { cursor: pointer; }
+.email-copy-status { font-size: 11px; font-weight: 700; letter-spacing: .04em; }
 .contact-links { display: flex; flex-wrap: wrap; gap: 25px; margin-top: 45px; }
 .contact-links a, .contact-links span { padding-bottom: 7px; border-bottom: 1px solid currentColor; }
 .contact-links a:hover { color: var(--ink); }
@@ -186,6 +202,7 @@ button { font: inherit; }
   .hero-grid { min-height: 0; grid-template-columns: minmax(0, 1fr) 145px; gap: 20px; }
   .hero-copy { padding: 72px 0 55px; }
   .hero h1 { font-size: clamp(52px, 10.2vw, 76px); }
+  .hero-secondary-name { margin-top: 11px; font-size: clamp(19px, 4vw, 28px); }
   .hero-index { min-height: 250px; padding-left: 15px; font-size: 8px; }
   .hero-index strong { font-size: clamp(21px, 4vw, 31px); }
   .index-mark { font-size: 48px; }
@@ -218,6 +235,7 @@ button { font: inherit; }
   .hero-grid { display: block; }
   .hero-copy { padding: 67px 0 43px; }
   .hero h1 { font-size: clamp(51px, 12vw, 68px); }
+  .hero-secondary-name { margin-top: 9px; font-size: clamp(19px, 5vw, 25px); }
   .mobile-break { display: initial; }
   .hero-role { margin-top: 23px; font-size: 18px; }
   .hero-focus { font-size: 13px; line-height: 1.55; }
