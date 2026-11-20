@@ -279,7 +279,7 @@ function App() {
                 <a className="button button-outline" href="#resume">{t.downloadResume}<span aria-hidden="true">↓</span></a>
               </div>
             </div>
-            <div className="hero-index" aria-hidden="true"><span>{isChinese ? '国际商务' : 'INTERNATIONAL'}</span><strong>{isChinese ? <>商业<br />× 数据<br /><i>× 数字化</i></> : <>BUSINESS<br />× DATA<br /><i>× DIGITAL</i></>}</strong><span>{isChinese ? '重庆 · 中国' : 'CHONGQING · CHINA'}</span><span className="index-mark">A.</span></div>
+            <div className="hero-index" aria-hidden="true"><span>{isChinese ? '国际商务' : 'INTERNATIONAL'}</span><strong>{isChinese ? <>商业<br />× 数据<br /><i>× 数字化</i></> : <>BUSINESS<br />× DATA<br /><i>× DIGITAL</i></>}</strong><span className="index-mark">A.</span></div>
           </div>
           <div className="hero-bottomline"><span>{isChinese ? '商业 / 运营 / 数字产品' : 'BUSINESS / OPERATIONS / DIGITAL PRODUCTS'}</span><span>01 — 07</span></div>
         </section>
