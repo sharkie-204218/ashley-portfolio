@@ -350,8 +350,8 @@ function App() {
         <section id="resume" className="resume section wrap">
           <div className="section-heading"><span>{t.resumeNumber}</span><span>{t.resumeNote}</span></div>
           <div className="resume-grid"><h2>{t.resumeHeading}</h2><div className="resume-downloads">
-            <a className="button button-dark" href="/resumes/Hongyu_Pan_EN_revised.pdf" download>{t.englishResume}<span aria-hidden="true">↓</span></a>
-            <a className="button button-outline" href="/resumes/潘虹宇-简历-修订版.pdf" download>{t.chineseResume}<span aria-hidden="true">↓</span></a>
+            <a className="button button-dark" href={`${import.meta.env.BASE_URL}resumes/Hongyu_Pan_EN_revised.pdf`} download>{t.englishResume}<span aria-hidden="true">↓</span></a>
+            <a className="button button-outline" href={`${import.meta.env.BASE_URL}resumes/潘虹宇-简历-修订版.pdf`} download>{t.chineseResume}<span aria-hidden="true">↓</span></a>
           </div></div>
         </section>
 
