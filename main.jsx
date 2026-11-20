@@ -124,7 +124,6 @@ const copy = {
     resumeHeading: <>MY<br /><span className="red">RESUME.</span></>,
     englishResume: 'DOWNLOAD ENGLISH RESUME',
     chineseResume: 'DOWNLOAD CHINESE RESUME',
-    resumeUpload: 'Resume PDFs will be available here once added.',
     contactNumber: '07 / CONTACT',
     contactNote: 'HAPPY TO CONNECT',
     contactHeading: "LET'S CONNECT / 联系我",
@@ -185,7 +184,6 @@ const copy = {
     resumeHeading: <>我的<br /><span className="red">简历。</span></>,
     englishResume: '下载英文简历',
     chineseResume: '下载中文简历',
-    resumeUpload: '简历 PDF 文件添加后，可在此下载。',
     contactNumber: '07 / 联系方式',
     contactNote: '欢迎交流',
     contactHeading: "LET'S CONNECT / 联系我",
@@ -352,9 +350,8 @@ function App() {
         <section id="resume" className="resume section wrap">
           <div className="section-heading"><span>{t.resumeNumber}</span><span>{t.resumeNote}</span></div>
           <div className="resume-grid"><h2>{t.resumeHeading}</h2><div className="resume-downloads">
-            <a className="button button-dark" href="/resumes/Hongyu_Pan_EN.pdf" download>{t.englishResume}<span aria-hidden="true">↓</span></a>
-            <a className="button button-outline" href="/resumes/Hongyu_Pan_CN.pdf" download>{t.chineseResume}<span aria-hidden="true">↓</span></a>
-            <p>{t.resumeUpload}</p>
+            <a className="button button-dark" href="/resumes/Hongyu_Pan_EN_revised.pdf" download>{t.englishResume}<span aria-hidden="true">↓</span></a>
+            <a className="button button-outline" href="/resumes/潘虹宇-简历-修订版.pdf" download>{t.chineseResume}<span aria-hidden="true">↓</span></a>
           </div></div>
         </section>
 

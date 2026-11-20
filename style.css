@@ -50,8 +50,7 @@ button { font: inherit; }
 .tags,
 .project-links,
 .contact-links,
-.footer,
-.resume-downloads > p {
+.footer {
   font-size: 10px;
   letter-spacing: .095em;
   font-weight: 700;
@@ -174,7 +173,6 @@ button { font: inherit; }
 .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; align-items: center; padding-top: 42px; }
 .resume h2 span { color: var(--red); }
 .resume-downloads { display: flex; flex-wrap: wrap; gap: 11px; }
-.resume-downloads > p { flex-basis: 100%; margin: 8px 0 0; color: var(--muted); font-size: 16px; line-height: 1.55; letter-spacing: .025em; }
 .contact { padding: 70px 0 76px; color: var(--paper); background: var(--red); }
 .contact .section-heading { border-color: rgba(243, 240, 233, .65); }
 .contact .section-heading span:first-child { color: var(--ink); }
