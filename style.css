@@ -58,12 +58,66 @@ button { font: inherit; }
 .language-toggle {
   min-width: 48px;
   padding: 9px 11px;
-  border: 1px solid var(--ink);
+  border: 0;
   color: var(--ink);
   background: transparent;
   cursor: pointer;
 }
-.language-toggle:hover { color: var(--paper); background: var(--ink); }
+.language-switcher { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--ink); }
+.language-toggle:hover,
+.language-toggle.is-active { color: var(--paper); background: var(--ink); }
+.gateway-reopen {
+  padding: 8px 0;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  cursor: pointer;
+}
+.gateway-reopen:hover { color: var(--red); }
+
+.language-gateway { min-height: 100vh; min-height: 100svh; background: var(--paper); }
+.gateway-wrap {
+  width: min(100%, 1380px);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 0 clamp(22px, 6vw, 88px);
+}
+.gateway-header {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gateway-header .wordmark { font-size: 17px; }
+.gateway-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 0 48px; }
+.gateway-heading { margin: 0 0 clamp(22px, 4vh, 38px); color: var(--ink); text-align: center; font-size: clamp(13px, 1.6vw, 17px); font-weight: 800; letter-spacing: .12em; }
+.gateway-heading span { padding: 0 .45em; color: var(--red); }
+.gateway-options { width: min(100%, 840px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); }
+.gateway-option {
+  width: 100%;
+  height: clamp(180px, 26vh, 250px);
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+  text-align: center;
+  font-size: clamp(25px, 3.2vw, 38px);
+  font-weight: 900;
+  letter-spacing: .1em;
+  cursor: pointer;
+}
+.gateway-option:hover { color: var(--paper); background: var(--ink); }
+.gateway-option:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.gateway-option-chinese { border-color: var(--red); }
+.gateway-option-chinese:hover { background: var(--red); }
 
 .hero { position: relative; padding-top: 27px; padding-bottom: 22px; }
 .eyebrow { display: flex; align-items: center; gap: 11px; }
@@ -191,11 +245,12 @@ button { font: inherit; }
 .footer a { color: var(--ink); }
 
 @media (max-width: 760px) {
-  .site-header { min-height: 72px; gap: 12px; }
+  .site-header { min-height: 72px; flex-wrap: wrap; gap: 12px; padding-top: 12px; padding-bottom: 12px; }
   .wordmark { font-size: 20px; }
-  .site-header nav { gap: clamp(8px, 2vw, 14px); }
+  .site-header nav { width: 100%; justify-content: space-between; gap: clamp(8px, 2vw, 14px); }
   .site-header nav a, .language-toggle { font-size: 9px; }
   .language-toggle { min-width: 40px; padding: 8px; }
+  .gateway-wrap { padding-left: clamp(22px, 6vw, 45px); padding-right: clamp(22px, 6vw, 45px); }
   .hero { padding-top: 21px; }
   .hero-grid { min-height: 0; grid-template-columns: minmax(0, 1fr) 145px; gap: 20px; }
   .hero-copy { padding: 72px 0 55px; }
@@ -224,9 +279,15 @@ button { font: inherit; }
 @media (max-width: 540px) {
   .wrap { padding-left: 21px; padding-right: 21px; }
   .site-header { align-items: flex-start; flex-direction: column; justify-content: center; gap: 8px; padding-top: 12px; padding-bottom: 12px; }
-  .site-header nav { width: 100%; justify-content: space-between; gap: 7px; }
+  .site-header nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; column-gap: 12px; row-gap: 8px; }
   .site-header nav a { font-size: 8px; letter-spacing: .04em; }
   .language-toggle { min-width: 35px; padding: 6px 7px; font-size: 8px; }
+  .gateway-wrap { padding-left: 21px; padding-right: 21px; }
+  .gateway-header { min-height: 64px; }
+  .gateway-content { padding: 22px 0 35px; }
+  .gateway-heading { margin-bottom: 22px; font-size: 11px; }
+  .gateway-options { width: min(100%, 400px); grid-template-columns: 1fr; gap: 12px; }
+  .gateway-option { height: clamp(112px, 18vh, 160px); padding: 20px; font-size: 26px; }
   .hero { padding-top: 18px; }
   .eyebrow { gap: 7px; font-size: 8px; letter-spacing: .055em; }
   .eyebrow > span:last-child { display: none; }

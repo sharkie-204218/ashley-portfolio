@@ -80,6 +80,7 @@ const projects = [
 const copy = {
   en: {
     nav: { education: 'EDUCATION', projects: 'PROJECTS', about: 'ABOUT', contact: 'CONTACT' },
+    changeLanguage: 'LANGUAGE',
     eyebrow: 'INTERNATIONAL BUSINESS / DATA / DIGITAL',
     portfolio: 'PORTFOLIO — 2026',
     role: 'Graduate Student in International Business',
@@ -140,6 +141,7 @@ const copy = {
   },
   zh: {
     nav: { education: '教育经历', projects: '项目作品', about: '关于我', contact: '联系我' },
+    changeLanguage: '语言选择',
     eyebrow: '国际商务 / 数据 / 人工智能',
     portfolio: '个人作品集 — 2026',
     role: '国际商务研究生',
@@ -200,6 +202,16 @@ const copy = {
   }
 };
 
+function getSavedLanguage() {
+  try {
+    const savedLanguage = window.localStorage.getItem('ashley-language');
+    return savedLanguage === 'en' || savedLanguage === 'zh' ? savedLanguage : null;
+  } catch (error) {
+    console.warn('Unable to read the saved language preference.', error);
+    return null;
+  }
+}
+
 function isConfiguredUrl(value) {
   if (!value) return false;
   try {
@@ -211,10 +223,21 @@ function isConfiguredUrl(value) {
 }
 
 function App() {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState(getSavedLanguage);
+  const [gatewayOpen, setGatewayOpen] = useState(false);
   const [emailCopyStatus, setEmailCopyStatus] = useState('');
-  const t = copy[language];
+  const t = copy[language || 'en'];
   const isChinese = language === 'zh';
+
+  function chooseLanguage(nextLanguage) {
+    setLanguage(nextLanguage);
+    setGatewayOpen(false);
+    try {
+      window.localStorage.setItem('ashley-language', nextLanguage);
+    } catch (error) {
+      console.warn('Unable to save the language preference.', error);
+    }
+  }
 
   async function copyEmail() {
     try {
@@ -249,6 +272,37 @@ function App() {
     document.documentElement.lang = isChinese ? 'zh-CN' : 'en';
   }, [isChinese]);
 
+  useEffect(() => {
+    if (!language || gatewayOpen || !window.location.hash) return;
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (!target) return;
+    const frame = window.requestAnimationFrame(() => target.scrollIntoView());
+    return () => window.cancelAnimationFrame(frame);
+  }, [language, gatewayOpen]);
+
+  if (!language || gatewayOpen) {
+    return (
+      <main className="language-gateway" aria-labelledby="gateway-title">
+        <div className="gateway-wrap">
+          <header className="gateway-header">
+            <a className="wordmark" href="#top" aria-label="ASHLEY home">ASHLEY<span className="red trademark">®</span></a>
+          </header>
+          <section className="gateway-content">
+            <h1 className="gateway-heading" id="gateway-title">SELECT LANGUAGE <span>/</span> 选择语言</h1>
+            <div className="gateway-options" role="group" aria-label="Choose a language">
+              <button className="gateway-option gateway-option-chinese" type="button" onClick={() => chooseLanguage('zh')}>
+                中文
+              </button>
+              <button className="gateway-option gateway-option-english" type="button" onClick={() => chooseLanguage('en')}>
+                ENGLISH
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <>
       <header className="site-header wrap">
@@ -258,7 +312,11 @@ function App() {
           <a href="#projects">{t.nav.projects}</a>
           <a href="#about">{t.nav.about}</a>
           <a href="#contact">{t.nav.contact}</a>
-          <button className="language-toggle" type="button" onClick={() => setLanguage(isChinese ? 'en' : 'zh')} aria-label={isChinese ? 'Switch language to English' : '切换到中文'}>{t.language}</button>
+          <div className="language-switcher" role="group" aria-label={isChinese ? '选择网站语言' : 'Select site language'}>
+            <button className={`language-toggle${isChinese ? ' is-active' : ''}`} type="button" onClick={() => chooseLanguage('zh')} aria-pressed={isChinese}>中文</button>
+            <button className={`language-toggle${!isChinese ? ' is-active' : ''}`} type="button" onClick={() => chooseLanguage('en')} aria-pressed={!isChinese}>EN</button>
+          </div>
+          <button className="gateway-reopen" type="button" onClick={() => setGatewayOpen(true)}>{t.changeLanguage}</button>
         </nav>
       </header>
 
